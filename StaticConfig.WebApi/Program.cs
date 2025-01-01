@@ -1,6 +1,10 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+namespace StaticConfig.WebApi;
 
-app.Run();
+public abstract class Program
+{
+    public static void Main(string[] args)
+    {
+
+    }
+}
