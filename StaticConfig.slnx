@@ -1,0 +1,15 @@
+﻿<Solution>
+  <Folder Name="/Core/">
+    <Project Path="StaticConfig.Application\StaticConfig.Application.csproj" Type="Classic C#" />
+    <Project Path="StaticConfig.Domain\StaticConfig.Domain.csproj" Type="Classic C#" />
+  </Folder>
+  <Folder Name="/Infrastructure/">
+    <Project Path="StaticConfig.Persistence\StaticConfig.Persistence.csproj" Type="Classic C#" />
+  </Folder>
+  <Folder Name="/Presentation/">
+    <Project Path="StaticConfig.WebApi\StaticConfig.WebApi.csproj" Type="Classic C#" />
+  </Folder>
+  <Folder Name="/Test/">
+    <Project Path="StaticConfig.Tests\StaticConfig.Tests.csproj" Type="Classic C#" />
+  </Folder>
+</Solution>
