@@ -1,0 +1,7 @@
+services:
+
+    configsdb:
+        image: mongo
+
+volumes:
+    mongo_data:
