@@ -6,7 +6,7 @@ using StaticConfig.Application.Interfaces;
 
 namespace StaticConfig.Application.Config.Queries;
 
-public class GetConfigListHandler(IRemoteConfigContext dbContext, IMapper mapper)
+public class GetConfigListQueryHandler(IRemoteConfigContext dbContext, IMapper mapper)
     : IRequestHandler<GetConfigListQuery, IList<GetConfigResponse>>
 {
     public async Task<IList<GetConfigResponse>> Handle(GetConfigListQuery request, CancellationToken cancellationToken)
