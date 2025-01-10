@@ -1,4 +1,4 @@
 namespace StaticConfig.Application.Common.Exceptions;
 
 public class NotFoundException(string name, object key) :
-    Exception($"Entity {{name}} ({{key}}) not found");
+    Exception($"Entity {name} ({key}) not found");
