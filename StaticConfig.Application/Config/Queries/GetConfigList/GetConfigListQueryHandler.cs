@@ -11,7 +11,9 @@ public class GetConfigListQueryHandler(IRemoteConfigContext dbContext, IMapper m
 {
     public async Task<IList<GetConfigResponse>> Handle(GetConfigListQuery request, CancellationToken cancellationToken)
     {
-        var list = await dbContext.Configs.ToListAsync(cancellationToken);
+        var list = await dbContext.Configs
+            .ToListAsync(cancellationToken);
+
         return mapper.Map<IList<GetConfigResponse>>(list);
     }
 }

@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using StaticConfig.Application.Interfaces;
 using StaticConfig.Persistence.Database;
@@ -14,7 +13,16 @@ public static class DependencyInjection
     {
         var connectionString = configuration.GetSection("DatabaseSettings:ConnectionString").Value;
         var databaseName = configuration.GetSection("DatabaseSettings:DatabaseName").Value;
-        
+
+        if (string.IsNullOrEmpty(databaseName))
+        {
+            throw new Exception("databaseName is Null or Empty");
+        }
+        if (string.IsNullOrEmpty(connectionString))
+        {
+            throw new Exception("ConnectionString is Null or Empty");
+        }
+
         var mongoClient = new MongoClient(connectionString);
 
         services
