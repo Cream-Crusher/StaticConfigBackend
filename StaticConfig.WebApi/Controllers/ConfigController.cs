@@ -23,7 +23,7 @@ public class ConfigController(IMapper mapper) : BaseController
     {
         var query = new GetConfigQuery(id);
         var response = await Mediator.Send(query);
-        return Ok(response);
+        return response.HasError ? StatusCode(response.StatusCode, response.Message) : Ok(response);
     }
 
     [HttpPost("")]

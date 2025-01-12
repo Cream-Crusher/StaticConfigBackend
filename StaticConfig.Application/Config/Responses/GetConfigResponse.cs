@@ -1,6 +1,6 @@
 namespace StaticConfig.Application.Config.Responses;
 
-public class GetConfigResponse
+public class GetConfigResponse : BaseResponse
 {
     public Guid Id { get; set; }
     public string Key { get; set; }

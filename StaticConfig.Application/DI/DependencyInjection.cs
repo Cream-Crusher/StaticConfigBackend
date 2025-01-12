@@ -1,6 +1,7 @@
 using System.Reflection;
 using FluentValidation;
 using MediatR;
+using MediatR.Pipeline;
 using Microsoft.Extensions.DependencyInjection;
 using StaticConfig.Application.Behaviors;
 
@@ -15,5 +16,9 @@ public static class DependencyInjection
             .AddValidatorsFromAssembly(Assembly.GetExecutingAssembly())
             .AddTransient(
                 typeof(IPipelineBehavior<,>),
-                typeof(ValidatorBehavior<,>));
+                typeof(ValidatorBehavior<,>))
+            .AddTransient(
+                typeof(IRequestExceptionHandler<,,>),
+                typeof(GlobalRequestExceptionHandler<,,>)
+                );
 }
