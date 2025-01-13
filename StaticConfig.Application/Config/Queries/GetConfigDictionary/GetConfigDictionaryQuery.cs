@@ -3,7 +3,7 @@ using StaticConfig.Application.Config.Responses;
 
 namespace StaticConfig.Application.Config.Queries;
 
-public class GetConfigListQuery : IRequest<IList<GetConfigResponse>>
+public class GetConfigDictionaryQuery : IRequest<Dictionary<string, string>>
 {
 
 }

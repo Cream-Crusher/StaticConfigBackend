@@ -12,9 +12,9 @@ namespace StaticConfig.WebApi.Controllers;
 public class ConfigController(IMapper mapper) : BaseController
 {
     [HttpGet("all")]
-    public async Task<ActionResult<IList<GetConfigResponse>>> GetAll()
+    public async Task<ActionResult<Dictionary<string, string>>> GetAll()
     {
-        var query = new GetConfigListQuery();
+        var query = new GetConfigDictionaryQuery();
         var response = await Mediator.Send(query);
         return Ok(response);
     }

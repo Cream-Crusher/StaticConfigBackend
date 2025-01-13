@@ -3,9 +3,9 @@ using StaticConfig.Application.Config.Queries;
 
 namespace RemoteConfig.Application.Enemies.Queries;
 
-public class GetConfigListQueryValidator : AbstractValidator<GetConfigListQuery>
+public class GetConfigDictionaryQueryValidator : AbstractValidator<GetConfigDictionaryQuery>
 {
-    public GetConfigListQueryValidator()
+    public GetConfigDictionaryQueryValidator()
     {
 
     }
