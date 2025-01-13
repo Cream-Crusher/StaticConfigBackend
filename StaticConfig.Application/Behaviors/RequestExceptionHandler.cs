@@ -6,15 +6,15 @@ using StaticConfig.Application.Config.Responses;
 
 namespace StaticConfig.Application.Behaviors;
 
-public class GlobalRequestExceptionHandler<TRequest, TResponse, TException>
+public class RequestExceptionHandler<TRequest, TResponse, TException>
     : IRequestExceptionHandler<TRequest, TResponse, TException>
     where TResponse : BaseResponse, new()
     where TException : Exception
 {
-    private readonly ILogger<GlobalRequestExceptionHandler<TRequest, TResponse, TException>> _logger;
+    private readonly ILogger<RequestExceptionHandler<TRequest, TResponse, TException>> _logger;
 
-    public GlobalRequestExceptionHandler(
-        ILogger<GlobalRequestExceptionHandler<TRequest, TResponse, TException>> logger)
+    public RequestExceptionHandler(
+        ILogger<RequestExceptionHandler<TRequest, TResponse, TException>> logger)
     {
         _logger = logger;
     }
@@ -26,19 +26,12 @@ public class GlobalRequestExceptionHandler<TRequest, TResponse, TException>
         CancellationToken cancellationToken
         )
     {
-        int statusCode;
-        switch (exception)
+        var statusCode = exception switch
         {
-            case NotFoundException:
-                statusCode = 404;
-                break;
-            case FluentValidation.ValidationException:
-                statusCode = 400;
-                break;
-            default:
-                statusCode = 500;
-                break;
-        }
+            NotFoundException => 404,
+            FluentValidation.ValidationException => 400,
+            _ => 500
+        };
         _logger.LogError(
             exception,
             "Request error: {@requestType}",

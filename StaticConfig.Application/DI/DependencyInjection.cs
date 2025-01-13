@@ -19,6 +19,6 @@ public static class DependencyInjection
                 typeof(ValidatorBehavior<,>))
             .AddTransient(
                 typeof(IRequestExceptionHandler<,,>),
-                typeof(GlobalRequestExceptionHandler<,,>)
+                typeof(RequestExceptionHandler<,,>)
                 );
 }
