@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations;
+using FluentValidation;
 using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
 using StaticConfig.Application.Common.Exceptions;

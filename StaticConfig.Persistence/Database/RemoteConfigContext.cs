@@ -19,6 +19,12 @@ public class RemoteConfigContext(DbContextOptions<RemoteConfigContext> options, 
 
         modelBuilder
             .Entity<Config>()
-            .ToCollection(configuration.GetSection(CONFIGS_COLLECTION).Value);
+            .ToCollection(configuration.GetSection(CONFIGS_COLLECTION).Value)
+            .HasKey(c => c.Key);
+
+        modelBuilder
+            .Entity<Config>()
+            .Property(c => c.Key)
+            .HasElementName("_id");
     }
 }

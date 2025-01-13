@@ -12,11 +12,11 @@ public class GetConfigQueryHandler(IRemoteConfigContext dbContext, IMapper mappe
     public async Task<GetConfigResponse> Handle(GetConfigQuery request, CancellationToken cancellationToken)
     {
         var config = await dbContext.Configs.FirstOrDefaultAsync(
-            c => c.Id == request.Id, cancellationToken);
+            c => c.Key == request.Key, cancellationToken);
 
         if (config == null)
         {
-            throw new NotFoundException(nameof(Config), request.Id);
+            throw new NotFoundException(nameof(Config), request.Key);
         }
         return mapper.Map<GetConfigResponse>(config);
     }

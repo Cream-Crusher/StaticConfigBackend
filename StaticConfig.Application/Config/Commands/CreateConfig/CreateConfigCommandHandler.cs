@@ -11,12 +11,8 @@ public class CreateConfigCommandHandler(IRemoteConfigContext dbContext, IMapper 
     {
         var config = new Domain.Config()
         {
-            Id = Guid.NewGuid(),
-
             Key = request.Key,
             Value = request.Value,
-            CreatedAt = DateTime.Now,
-            Active = true
         };
         await dbContext.Configs.AddAsync(config, cancellationToken);
         await dbContext.SaveChangesAsync(cancellationToken);

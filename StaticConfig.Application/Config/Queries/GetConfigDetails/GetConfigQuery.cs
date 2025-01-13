@@ -3,7 +3,7 @@ using StaticConfig.Application.Config.Responses;
 
 namespace StaticConfig.Application.Config.Queries;
 
-public class GetConfigQuery(Guid id) : IRequest<GetConfigResponse>
+public class GetConfigQuery(string key) : IRequest<GetConfigResponse>
 {
-    public Guid Id { get; set; } = id;
+    public string Key { get; set; } = key;
 }

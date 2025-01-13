@@ -19,20 +19,20 @@ public class ConfigController(IMapper mapper) : BaseController
         return Ok(response);
     }
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<GetConfigResponse>> GetById(Guid id)
+    [HttpGet("{key}")]
+    public async Task<ActionResult<GetConfigResponse>> GetByKey(string key)
     {
-        var query = new GetConfigQuery(id);
+        var query = new GetConfigQuery(key);
         var response = await Mediator.Send(query);
         return response.HasError ? StatusCode(response.StatusCode, response.Message) :
             Ok(response);
     }
 
     [HttpPost("")]
-    public async Task<ActionResult<Guid>> CreateConfig([FromBody] CreateConfigCommand command)
+    public async Task<ActionResult<string>> CreateConfig([FromBody] CreateConfigCommand command)
     {
         var response = await Mediator.Send(command);
         return response.HasError ? StatusCode(response.StatusCode, response.Message) :
-            Created($"[config/{response.Id}]", response.Id);
+            Created($"[config/{response.Key}]", response.Key);
     }
 }
