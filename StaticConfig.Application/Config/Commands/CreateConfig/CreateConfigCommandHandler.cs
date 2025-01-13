@@ -1,11 +1,13 @@
+using AutoMapper;
 using MediatR;
+using StaticConfig.Application.Config.Responses;
 using StaticConfig.Application.Interfaces;
 
 namespace StaticConfig.Application.Config.Commands.CreateConfig;
 
-public class CreateConfigCommandHandler(IRemoteConfigContext dbContext) : IRequestHandler<CreateConfigCommand, Guid>
+public class CreateConfigCommandHandler(IRemoteConfigContext dbContext, IMapper mapper) : IRequestHandler<CreateConfigCommand, GetConfigResponse>
 {
-    public async Task<Guid> Handle(CreateConfigCommand request, CancellationToken cancellationToken)
+    public async Task<GetConfigResponse> Handle(CreateConfigCommand request, CancellationToken cancellationToken)
     {
         var config = new Domain.Config()
         {
@@ -19,6 +21,6 @@ public class CreateConfigCommandHandler(IRemoteConfigContext dbContext) : IReque
         await dbContext.Configs.AddAsync(config, cancellationToken);
         await dbContext.SaveChangesAsync(cancellationToken);
 
-        return config.Id;
+        return mapper.Map<GetConfigResponse>(config);
     }
 }

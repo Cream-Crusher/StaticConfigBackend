@@ -32,7 +32,7 @@ public class GlobalRequestExceptionHandler<TRequest, TResponse, TException>
             case NotFoundException:
                 statusCode = 404;
                 break;
-            case ValidationException:
+            case FluentValidation.ValidationException:
                 statusCode = 400;
                 break;
             default:

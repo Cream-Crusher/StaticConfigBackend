@@ -6,8 +6,6 @@ public class CreateConfigValidator : AbstractValidator<CreateConfigCommand>
 {
     public CreateConfigValidator()
     {
-        RuleFor(config => config.Id)
-            .NotEmpty();
         RuleFor(config => config.Key)
             .NotEmpty()
             .MaximumLength(64);

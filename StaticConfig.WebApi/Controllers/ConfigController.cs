@@ -1,3 +1,4 @@
+using System.Net;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using StaticConfig.Application.Config.Commands.CreateConfig;
@@ -19,17 +20,19 @@ public class ConfigController(IMapper mapper) : BaseController
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<IList<GetConfigResponse>>> GetById(Guid id)
+    public async Task<ActionResult<GetConfigResponse>> GetById(Guid id)
     {
         var query = new GetConfigQuery(id);
         var response = await Mediator.Send(query);
-        return response.HasError ? StatusCode(response.StatusCode, response.Message) : Ok(response);
+        return response.HasError ? StatusCode(response.StatusCode, response.Message) :
+            Ok(response);
     }
 
     [HttpPost("")]
-    public async Task<ActionResult<Guid>> CreateEnemy([FromBody] CreateConfigCommand command)
+    public async Task<ActionResult<Guid>> CreateConfig([FromBody] CreateConfigCommand command)
     {
-        var id = await Mediator.Send(command);
-        return Created($"[config/{id}]", id);
+        var response = await Mediator.Send(command);
+        return response.HasError ? StatusCode(response.StatusCode, response.Message) :
+            Created($"[config/{response.Id}]", response.Id);
     }
 }
