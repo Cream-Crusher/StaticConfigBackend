@@ -2,9 +2,9 @@ using FluentValidation;
 
 namespace StaticConfig.Application.Config.Commands.UpdateConfig;
 
-public class UpdateConfigValidator : AbstractValidator<UpdateConfigCommand>
+public class UpdateConfigCommandValidator : AbstractValidator<UpdateConfigCommand>
 {
-    public UpdateConfigValidator()
+    public UpdateConfigCommandValidator()
     {
         RuleFor(config => config.Key)
             .NotEmpty()

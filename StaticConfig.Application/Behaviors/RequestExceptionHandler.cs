@@ -8,7 +8,7 @@ namespace StaticConfig.Application.Behaviors;
 
 public class RequestExceptionHandler<TRequest, TResponse, TException>
     : IRequestExceptionHandler<TRequest, TResponse, TException>
-    where TResponse : BaseResponse, new()
+    where TResponse : ErrorResponse, new()
     where TException : Exception
 {
     private readonly ILogger<RequestExceptionHandler<TRequest, TResponse, TException>> _logger;

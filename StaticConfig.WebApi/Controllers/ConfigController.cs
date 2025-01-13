@@ -2,6 +2,7 @@ using System.Net;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using StaticConfig.Application.Config.Commands.CreateConfig;
+using StaticConfig.Application.Config.Commands.DeleteConfig;
 using StaticConfig.Application.Config.Commands.UpdateConfig;
 using StaticConfig.Application.Config.Queries;
 using StaticConfig.Application.Config.Responses;
@@ -39,6 +40,14 @@ public class ConfigController(IMapper mapper) : BaseController
 
     [HttpPut("")]
     public async Task<ActionResult> UpdateConfig([FromBody] UpdateConfigCommand command)
+    {
+        var response = await Mediator.Send(command);
+        return response.HasError ? StatusCode(response.StatusCode, response.Message) :
+            Ok();
+    }
+
+    [HttpDelete("")]
+    public async Task<ActionResult> DeleteConfig([FromBody] DeleteConfigCommand command)
     {
         var response = await Mediator.Send(command);
         return response.HasError ? StatusCode(response.StatusCode, response.Message) :

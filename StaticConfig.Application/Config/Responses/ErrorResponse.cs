@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace StaticConfig.Application.Config.Responses;
 
 
-public class BaseResponse
+public class ErrorResponse
 {
     [JsonIgnore]
     public bool HasError { get; set; }
