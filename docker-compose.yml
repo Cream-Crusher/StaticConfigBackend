@@ -2,6 +2,14 @@ services:
 
     configsdb:
         image: mongo
+        container_name: mongo_static_config_db
+
+    api:
+        image: api
+        container_name: api
+        build:
+            context: .
+            dockerfile: StaticConfig.WebApi/Dockerfile
 
 volumes:
     mongo_data:

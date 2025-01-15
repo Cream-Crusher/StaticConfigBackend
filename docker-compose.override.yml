@@ -3,7 +3,7 @@ services:
     configsdb:
         restart: always
         healthcheck:
-            test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+            test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017 --quiet
             interval: 10s
             timeout: 5s
             retries: 5
@@ -12,3 +12,9 @@ services:
             - "27017:27017"
         volumes:
             - mongo_data:/data/db
+
+    api:
+        depends_on:
+          - configsdb
+        ports:
+          - "8080:8080"
