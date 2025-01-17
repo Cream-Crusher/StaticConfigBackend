@@ -7,4 +7,18 @@
         <RootNamespace>Static.Tests</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="Config\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\StaticConfig.Persistence\StaticConfig.Persistence.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="13.0.1" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.1" />
+      <PackageReference Include="xunit" Version="2.9.3" />
+    </ItemGroup>
+
 </Project>
