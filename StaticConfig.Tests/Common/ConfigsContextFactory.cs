@@ -24,22 +24,22 @@ public class ConfigsContextFactory
 
         context.Database.EnsureCreated();
         context.Configs.AddRange(
-            new Config
+            new StaticConfig.Domain.Config
             {
                 Key = ConfigAKey,
                 Value = "ValueA"
             },
-            new Config
+            new StaticConfig.Domain.Config
             {
                 Key = ConfigBKey,
                 Value = "ValueB"
             },
-            new Config
+            new StaticConfig.Domain.Config
             {
                 Key = ConfigKeyForDelete,
                 Value = "ValueForDelete"
             },
-            new Config
+            new StaticConfig.Domain.Config
             {
                 Key = ConfigKeyForUpdate,
                 Value = "ValueForUpdate"
