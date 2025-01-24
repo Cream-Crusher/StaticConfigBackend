@@ -1,7 +1,5 @@
 using AutoMapper;
-using Microsoft.Extensions.Configuration;
 using StaticConfig.Application.Common.Mappings;
-using StaticConfig.Application.Interfaces;
 using StaticConfig.Persistence.Database;
 using Xunit;
 
@@ -9,7 +7,6 @@ namespace Static.Tests.Common;
 
 public class QueryTestFicture : IDisposable
 {
-    private IConfiguration _configuration;
     public RemoteConfigContext Context;
     public IMapper Mapper;
 

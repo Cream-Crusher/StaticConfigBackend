@@ -1,7 +1,7 @@
 using AutoMapper;
+using Shouldly;
 using Static.Tests.Common;
 using StaticConfig.Application.Config.Queries;
-using Shouldly;
 using StaticConfig.Persistence.Database;
 using Xunit;
 

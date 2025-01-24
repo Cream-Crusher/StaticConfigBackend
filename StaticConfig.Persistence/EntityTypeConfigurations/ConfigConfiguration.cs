@@ -26,6 +26,5 @@ public class ConfigConfiguration : IEntityTypeConfiguration<Config>
             .Property(config => config.Value)
             .IsRequired()
             .HasMaxLength(512);
-
     }
 }

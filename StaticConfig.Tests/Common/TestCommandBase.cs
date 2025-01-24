@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Configuration;
 using StaticConfig.Persistence.Database;
 
 namespace Static.Tests.Common;
