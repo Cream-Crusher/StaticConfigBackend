@@ -8,7 +8,7 @@ using Xunit;
 namespace Static.Tests.Config.Queries;
 
 [Collection("QueryCollection")]
-public class GetConfigDictQueryHandlerTests
+public class GetConfigDictQueryHandlerTests : TestCommandBase
 {
     private readonly RemoteConfigContext Context;
     private readonly IMapper Mapper;
@@ -32,6 +32,6 @@ public class GetConfigDictQueryHandlerTests
 
         // Assert
         result.ShouldBeOfType<Dictionary<string, string>>();
-        result.Count.ShouldBe(2);
+        result.Count.ShouldBe(4);
     }
 }

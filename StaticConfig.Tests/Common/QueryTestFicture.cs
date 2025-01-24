@@ -15,7 +15,7 @@ public class QueryTestFicture : IDisposable
 
     public QueryTestFicture()
     {
-        Context = ConfigsContextFactory.Create(_configuration);
+        Context = ConfigsContextFactory.Create();
         var configurationProvider = new MapperConfiguration(cfg =>
         {
             cfg.AddProfile(new ConfigMappingProfile());

@@ -7,11 +7,10 @@ namespace Static.Tests.Common;
 public abstract class TestCommandBase : IDisposable
 {
     protected readonly RemoteConfigContext Context;
-    protected readonly IConfiguration Configuration;
 
     public TestCommandBase()
     {
-        Context = ConfigsContextFactory.Create(Configuration);
+        Context = ConfigsContextFactory.Create();
     }
 
     public void Dispose()

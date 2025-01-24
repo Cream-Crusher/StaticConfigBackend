@@ -1,7 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using MongoDB.Driver;
-using StaticConfig.Domain;
 using StaticConfig.Persistence.Database;
 
 namespace Static.Tests.Common;
@@ -14,13 +11,13 @@ public class ConfigsContextFactory
     public static string ConfigKeyForDelete = "ConfigKeyForDelete";
     public static string ConfigKeyForUpdate = "ConfigKeyForUpdate";
 
-    public static RemoteConfigContext Create(IConfiguration configuration)
+    public static RemoteConfigContext Create()
     {
         var options = new DbContextOptionsBuilder<RemoteConfigContext>()
             .UseInMemoryDatabase(Guid.NewGuid().ToString())
             .Options;
 
-        var context = new RemoteConfigContext(options, configuration);
+        var context = new RemoteConfigContext(options);
 
         context.Database.EnsureCreated();
         context.Configs.AddRange(
